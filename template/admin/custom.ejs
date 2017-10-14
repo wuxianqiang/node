@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>后台管理</title>
+  </head>
+  <body>
+    <div class="page">
+      <% include components/top.inc.ejs %>
+      <div class="content-wrap">
+        <div>
+          <form action="?" method="post" enctype="multipart/form-data">
+            标题：<input type="text" name="title"><br>
+            描述：<textarea name="description"></textarea><br>
+            上传头像：<input type="file" name="f1"><br>
+            <input type="submit" value="增加">
+          </form>
+        </div>
+        <div>
+          <table>
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>标题</th>
+                <th>描述</th>
+                <th>头像</th>
+                <th>操作</th>
+              </tr>
+            </thead>
+            <tbody>
+              <% for(var i = 0; i < customs.length; i++){ %>
+              <tr>
+                <td><%= customs[i].ID %></td>
+                <td><%= customs[i].title %></td>
+                <td><%= customs[i].description %></td>
+                <td><img src="/upload/<%= customs[i].src %>" alt="用户头像" width="20" height="20"></td>
+                <td>
+                  <a href="?act=mod&id=<%= customs[i].ID %>">改</a>
+                  <a href="?act=del&id=<%= customs[i].ID %>" onclick="return confirm('你确认删除吗？')">删</a>
+                </td>
+              </tr>
+              <% } %>
+            </tbody>
+          </table>
+        </div>
+        <div>
+         <% if(typeof mod_data != 'undefined'){ %>
+          <form action="?" method="post" enctype="multipart/form-data">
+            <input type="hidden" name="mod_id" value="<%= mod_data.ID %>">
+            标题：<input type="text" name="title" value="<%= mod_data.title %>"><br>
+            描述：<textarea name="description"><%= mod_data.description %></textarea><br>
+            头像：<input type="file" name="f1"><br>
+            <input type="submit" value="修改">
+            <a href="/admin/custom">取消修改</a>
+          </form>
+          <% } %>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>
