@@ -19,7 +19,7 @@ server.use(function () {
 
 ```js
 //https://xxx.com/user/1.html
-//https://xxx.com/user/1.html
+//https://xxx.com/user/2.html
 
 var routerUser = express.Router(); //创建路由
 server.use("/user", routerUser); //添加到服务器上
