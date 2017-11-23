@@ -97,6 +97,22 @@ server.on("request", function (request, response) { //解析请求的URL
 * 需要解析`rsp=0&inputT=2149&rsv_sug4=6234`这样的数据，可以使用queryString模块，转换为{rsp：0，inputT：2149，rsv_sug4：6234}
 * url模块是专门解析url地址的
 
+```js
+//解析get数据
+
+const http = require("http");
+const urlLib = require("url");
+var server = http.createServer((req, res) => {
+    var obj = urlLib.parse(req.url, true);
+    var url = obj.pathname;
+    var data = obj.query;
+    console.log(url,data);
+    res.end();
+})
+server.listen(8080, () => {
+    console.log("created success")
+})
+```
 
 ## consolidate模板适配
 1. 安装
