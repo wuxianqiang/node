@@ -93,6 +93,9 @@ server.on("request", function (request, response) { //解析请求的URL
     }
 });
 ```
+## 解析数据
+* 需要解析`rsp=0&inputT=2149&rsv_sug4=6234`这样的数据，可以使用queryString模块，转换为{rsp：0，inputT：2149，rsv_sug4：6234}
+
 
 ## consolidate模板适配
 1. 安装
