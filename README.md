@@ -113,6 +113,27 @@ server.listen(8080, () => {
     console.log("created success")
 })
 ```
+### 解析post数据
+```js
+//解析post数据
+
+const http = require("http");
+const queryString = require("querystring");
+var server = http.createServer((req, res) => {
+    var str = "";
+    req.on("data", (data) => {
+        str += data
+    })
+    req.on("end", () => {
+        var data = queryString.parse(str);
+        console.log(data);
+    })
+    res.end();
+})
+server.listen(8080, () => {
+    console.log("created success")
+})
+```
 
 ## consolidate模板适配
 1. 安装
