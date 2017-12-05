@@ -164,3 +164,33 @@ routerUser.get("/2.html", function (req, res) {
   res.send("2")
 })
 ```
+
+## koa-router路由
+```js
+const Koa = require("koa")
+const koaRouter = require("koa-router");
+const app = new Koa();
+
+let act = new koaRouter();//子路由
+act
+    .get("/reg", async(ctx) => {
+        ctx.body = "注册"
+    })
+    .get("/login", async(ctx) => {
+        ctx.body = "登入"
+    })
+
+
+let router = new koaRouter();//父路由
+router.use("/act",  act.routes(), act.allowedMethods());
+
+app.use(router.routes());
+app.use(router.allowedMethods());
+
+app.listen(8080, () => {
+    console.log("create successfully!");
+})
+
+//http://localhost:8080/act/login
+//http://localhost:8080/act/login
+```
