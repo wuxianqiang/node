@@ -191,6 +191,6 @@ app.listen(8080, () => {
     console.log("create successfully!");
 })
 
-//http://localhost:8080/act/login
+//http://localhost:8080/act/reg
 //http://localhost:8080/act/login
 ```
