@@ -1,5 +1,12 @@
 # node
-## HTTP服务器
+
+## 目录
+
+* [解析get数据](解析get数据)
+* [解析post数据](解析post数据)
+* [用express解析get数据和post数据](用express解析get数据和post数据)
+
+### HTTP服务器
 
 ```js
 //这是一个简单的Node HTTP服务器，能处理当前目录的文件，
@@ -112,6 +119,7 @@ server.listen(8080, () => {
 })
 ```
 ### 解析post数据
+
 ```js
 //解析post数据
 
@@ -132,7 +140,33 @@ server.listen(8080, () => {
     console.log("created success")
 })
 ```
+### 用express解析get数据和post数据
 
+```js
+const express = require("express");
+const bodyParser = require("body-parser");
+const server = express();
+
+server.use(bodyParser.urlencoded({
+    extended: true,
+    limit: 2 * 1024 * 1024
+}))
+
+server.use("/", (req, res, next) => {
+    const GET = req.query;
+    console.log(GET);
+    next();
+})
+
+server.use("/", (req, res) => {
+    const POST = req.body;
+    console.log(POST);
+})
+
+server.listen(8080, () => {
+    console.log("port in 8080!");
+})
+```
 ## consolidate模板适配
 1. 安装
 2. 配置
