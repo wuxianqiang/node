@@ -93,9 +93,7 @@ server.on("request", function (request, response) { //解析请求的URL
     }
 });
 ```
-## 解析数据
-* 需要解析`rsp=0&inputT=2149&rsv_sug4=6234`这样的数据，可以使用queryString模块，转换为{rsp：0，inputT：2149，rsv_sug4：6234}
-* url模块是专门解析url地址的
+### 解析get数据
 
 ```js
 //解析get数据
