@@ -167,6 +167,30 @@ server.listen(8080, () => {
     console.log("port in 8080!");
 })
 ```
+### 用cookie签名
+```js
+const express = require("express");
+const cookieParser = require("cookie-parser");
+
+let server = express();
+
+server.use(cookieParser("abcdefghijhlmn"));
+
+server.use("/", (req, res) => {
+    req.secret = "abcdefghijhlmn";
+    res.cookie("iphone", "8888", {
+        signed: true
+    })
+    let cook = req.signedCookies;
+    console.log(cook);
+    res.send("hell0")
+})
+
+server.listen(8080, () => {
+    console.log("successfully!")
+})
+```
+
 ## consolidate模板适配
 1. 安装
 2. 配置
