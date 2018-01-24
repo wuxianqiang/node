@@ -1,7 +1,7 @@
 # node
 
 理解`koa`如何搭建一个服务器
-1. 手写必须安装`npm i koa`
+1. 手先必须安装`npm i koa`
 2. 创建一个`server.js`文件
 3. 写入如下代码
 ```js
