@@ -7,7 +7,9 @@
 ```js
 const Koa = require('koa');
 const app = new Koa();
-app.listen(8080);
+app.listen('8080', () => {
+    console.log('port in 8080')
+});
 ```
 4. 服务器已经搭建完成，打开页面`http://localhost:8080/`,啥也没有呀
 5. 返回我们需要的内容
