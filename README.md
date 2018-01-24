@@ -1,5 +1,40 @@
 # node
 
+理解`koa`如何搭建一个服务器
+1. 手写必须安装`npm i koa`
+2. 创建一个`server.js`文件
+3. 写入如下代码
+```js
+const Koa = require('koa');
+const app = new Koa();
+app.listen(8080);
+```
+4. 服务器已经搭建完成，打开页面`http://localhost:8080/`,啥也没有呀
+5. 返回我们需要的内容
+```js
+function getData() {
+    return new Promise((resolve, reject) => {
+        fs.readFile('./www/index.html', 'utf-8', (err, data) => {
+            if (!err) {
+                resolve(data);
+            } else {
+                reject(err);
+            }
+        })
+    })
+}
+
+app.use(async(ctx, next) => {
+    ctx.html = await getData();
+    next();
+})
+
+app.use(async(ctx, next) => {
+    ctx.body = ctx.html;
+})
+```
+简单介绍一下读取文件的操作
+
 ## 目录
 
 * [解析get数据](#解析get数据)
