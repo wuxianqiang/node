@@ -250,3 +250,35 @@ app.listen(8080, () => {
 //http://localhost:8080/act/reg
 //http://localhost:8080/act/login
 ```
+
+```js
+const Koa = require('koa');
+const fs = require('fs')
+
+let app = new Koa();
+
+async function writeData() {
+    await fs.writeFileSync('./www/data.json', '[{"name":"Qiang"}]', 'utf-8');
+}
+
+function getData() {
+    return new Promise((resolve, reject) => {
+        fs.readFile('./www/index.html', 'utf-8', (err, data) => {
+            if (!err) {
+                resolve(data);
+            } else {
+                reject(err);
+            }
+        })
+    })
+}
+
+app.use(async(ctx) => {
+    html = await getData();
+    ctx.body = html;
+})
+
+app.listen("8080", () => {
+    console.log("port in 8080")
+})
+```
