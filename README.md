@@ -1,4 +1,26 @@
 # node
+获取url参数
+```js
+let url  = require('url');
+let str = 'https://c.y.qq.com/splcloud/fcgi-bin/p.fcg?g_tk=5381&format=jsonp&jsonpCallback=jsonp1'
+console.log(url.parse(str, true))
+/*
+{
+  protocol: 'https:',
+  slashes: true,
+  auth: null,
+  host: 'c.y.qq.com',
+  port: null,
+  hostname: 'c.y.qq.com',
+  hash: null,
+  search: '?g_tk=5381&format=jsonp&jsonpCallback=jsonp1',
+  query: { g_tk: '5381', format: 'jsonp', jsonpCallback: 'jsonp1' },
+  pathname: '/splcloud/fcgi-bin/p.fcg',
+  path: '/splcloud/fcgi-bin/p.fcg?g_tk=5381&format=jsonp&jsonpCallback=jsonp1',
+  href: 'https://c.y.qq.com/splcloud/fcgi-bin/p.fcg?g_tk=5381&format=jsonp&jsonpCallback=jsonp1' 
+}
+*/
+```
 
 理解`koa`如何搭建一个服务器
 1. 手先必须安装`npm i koa`
