@@ -2,8 +2,8 @@
 获取url参数
 ```js
 let url  = require('url');
-let str = 'https://c.y.qq.com/splcloud/fcgi-bin/p.fcg?g_tk=5381&format=jsonp&jsonpCallback=jsonp1'
-console.log(url.parse(str, true))
+let str = 'https://c.y.qq.com/splcloud/fcgi-bin/p.fcg?g_tk=5381&format=jsonp&jsonpCallback=jsonp1';
+console.log(url.parse(str, true));
 /*
 {
   protocol: 'https:',
