@@ -364,3 +364,21 @@ app.listen(8080, () => {
     console.log('port in 8080')
 })
 ```
+## 操作数据库
+```js
+const mysql = require('mysql')
+let db = mysql.createConnection({
+  host: 'localhost',
+  user: 'root',
+  password: '07690928wxq',
+  database: 'blog'
+})
+
+db.query('SELECT * FROM user_table', (err, data) => {
+  if (!err) {
+    console.log(data)
+  } else {
+    console.log(err)
+  }
+})
+```
